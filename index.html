@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PRANAY LOOTS AND DEALS</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f9fa; color: #333; padding: 20px; }
+    h1 { text-align: center; color: #2c3e50; }
+    .deal { background: #fff; border-radius: 12px; padding: 15px; margin: 10px auto; width: 90%; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .deal-title { font-size: 18px; font-weight: bold; }
+    .deal-platform { font-size: 14px; color: #555; }
+    .deal-discount { color: #e74c3c; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>PRANAY LOOTS AND DEALS</h1>
+  <div id="deals"></div>
+  <script>
+    fetch("data/deals.json")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("deals");
+        data.forEach(deal => {
+          container.innerHTML += `
+            <div class="deal">
+              <div class="deal-title">${deal.title}</div>
+              <div class="deal-platform">${deal.platform}</div>
+              <div class="deal-discount">Discount: ${deal.discount}</div>
+            </div>`;
+        });
+      });
+  </script>
+</body>
+</html>
